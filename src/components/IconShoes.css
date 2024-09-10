@@ -1,0 +1,83 @@
+#box-icon-link {
+  display: flex;
+  text-decoration: none;
+  background-color: transparent;
+  flex-basis: 0;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  width: auto;
+  /* border: 1px solid green; */
+}
+
+.box-icon-shoes {
+  padding: 10px;
+  display: flex;
+  flex-grow: 1;
+  min-width: 145px;
+  max-width: 180px;
+  flex-basis: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #323232;
+  /* border: 1px solid red; */
+}
+
+.box-icon-shoes:hover {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+#image-icon-shoes {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+#model-price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* border: 1px solid goldenrod; */
+  flex-grow: 1;
+  width: 100%;
+  row-gap: 10px;
+  padding: 15px 5px;
+  background-color: transparent;
+}
+
+#price-box {
+  font-size: 1.1rem;
+  text-align: start;
+  font-weight: 700;
+}
+
+#model-box {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: start;
+}
+
+@media screen and (min-width: 650px) {
+  .box-icon-shoes {
+    max-width: 180px;
+  }
+
+  #price-box {
+    font-size: 1.2rem;
+    text-align: start;
+    font-weight: 700;
+  }
+
+  #model-box {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: start;
+  }
+}
