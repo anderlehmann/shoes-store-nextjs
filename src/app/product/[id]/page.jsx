@@ -27,7 +27,6 @@ export default function Teste({ params }) {
       setDataShoes(result);
       setIsLoading(false);
 
-      console.log(dataShoes);
     } catch (error) {
       setIsLoading(false);
       setError(error.message);
@@ -50,11 +49,11 @@ export default function Teste({ params }) {
           {!isLoading && !error && dataShoes && (
             <>
               <section id='product-images'>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-1'></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-2'></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-3'></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-4'></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-5'></Image>
+                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-1' priority></Image>
+                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-2' priority></Image>
+                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-3' priority></Image>
+                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-4' priority></Image>
+                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-5' priority></Image>
               </section>
               <section id='product-model-name'>
                 <p>{`${dataShoes.brand} ${dataShoes.model}`}</p>
@@ -63,9 +62,19 @@ export default function Teste({ params }) {
               </section>
               <section id='product-price-cart'>
                 <p>R$ {dataShoes.price}</p>
-                <button>
-                  <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
-                </button>
+                <div id='product-cart-favorite-wrapper'>
+                  <button id='product-button-cart'>
+                    <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
+                    Adicionar ao carrinho
+                  </button>
+                  <button id='product-button-favorite'>
+                    <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/like_rlnmsc.svg' width={25} height={25} />
+                  </button>
+                </div>
+                <div id='price-free-shipping'>
+                  <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726197569/truck_etliwi.svg' width={20} height={20} />
+                  <span>Frete grátis acima de R$ 129</span>
+                </div>
               </section>
             </>
           )}
