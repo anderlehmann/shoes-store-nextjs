@@ -2,12 +2,12 @@
 import Link from "next/link"
 import Image from "next/image";
 
-import './shoesStore.css';
+import '@/app/shoesStore.css';
 
 export function HeaderShoesStore() {
   return (
     <header id='header-store'>
-      <Link href='/projetos/solado-store'>Solado®</Link>
+      <Link href='/'>Solado®</Link>
 
       <div id='search-container'>
         <Image
@@ -38,7 +38,7 @@ export function HeaderShoesStore() {
           id='search-mobile'
         />
 
-        <Link href='/projetos/solado-store/carrinho'>
+        <Link href='/cart'>
           <Image
             src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/cart_mgrjub.svg'
             alt='carrinho'
@@ -48,7 +48,7 @@ export function HeaderShoesStore() {
           />
         </Link>
 
-        <Link href='/projetos/solado-store/favoritos'>
+        <Link href='/favorites'>
           <Image
             src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/like_rlnmsc.svg'
             alt='favoritos'
@@ -58,7 +58,7 @@ export function HeaderShoesStore() {
           />
         </Link>
 
-        <Link href="/projetos/solado-store/usuario">
+        <Link href="/user">
           <Image
             src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/user_sflbco.svg'
             alt='usuário'

@@ -1,7 +1,7 @@
 'use client';
 
-import './shoesStore.css'
-import { HeaderShoesStore as Header } from './HeaderShoesStore';
+import '@/app/shoesStore.css'
+import { HeaderShoesStore as Header } from '@/components/HeaderShoesStore';
 import { IconShoes } from '@/components/IconShoes';
 import { useEffect, useState } from 'react';
 
@@ -35,7 +35,7 @@ export default function HomeShoesStore() {
         />
       })
     }
-    return <p className='p-home-load-error'>Não foi possível carregar os dados.</p>
+    return <p className='p-load-error'>Não foi possível carregar os dados.</p>
   }
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function HomeShoesStore() {
         <Header />
         <section id='icons-shoes-wrapper'>
           {/* <div id='icons-shoes-wrapper-center'> */}
-          {isLoading ? <p className='p-home-load-error'>Carregando...</p> : dataMapped()}
+          {isLoading ? <p className='p-load-error'>Carregando...</p> : dataMapped()}
           {/* </div> */}
         </section>
       </div>
