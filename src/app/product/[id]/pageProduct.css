@@ -29,6 +29,11 @@
   gap: 15px;
 }
 
+#product-images:hover .skip-prev-arrows {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
 #product-image-1 {
   max-width: 100%;
   height: auto;
@@ -37,6 +42,65 @@
   border-radius: 15px;
   justify-self: center;
   grid-area: image;
+  position: relative;
+}
+
+.skip-prev-arrows {
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  height: 50px;
+  padding: 5px;
+  background-color: #eeeeee;
+  cursor: pointer;
+  border-radius: 10px 0 0 10px;
+}
+
+#arrow-right {
+  justify-self: right;
+}
+
+#arrow-left {
+  justify-self: left;
+  transform: scaleX(-1);
+}
+
+#product-images:hover #product-radio-wrapper {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+#product-radio-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  justify-self: center;
+  align-self: last baseline;
+  margin-bottom: 140px;
+  height: 10px;
+  width: auto;
+  gap: 10px;
+  transition: opacity 0.5s ease;
+}
+
+#product-radio {
+  appearance: none;
+  height: 10px;
+  width: 10px;
+  border: 1px solid #323232;
+  justify-self: center;
+  align-self: last baseline;
+  border-radius: 50%;
+}
+
+#product-radio:checked {
+  background-color: #323232;
 }
 
 .product-images-thumb {
@@ -51,18 +115,22 @@
 
 #product-image-2 {
   grid-area: image1;
+  cursor: pointer;
 }
 
 #product-image-3 {
   grid-area: image2;
+  cursor: pointer;
 }
 
 #product-image-4 {
   grid-area: image3;
+  cursor: pointer;
 }
 
 #product-image-5 {
   grid-area: image4;
+  cursor: pointer;
 }
 
 #product-model-name {
@@ -102,7 +170,7 @@
 }
 
 #price-free-shipping {
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -184,6 +252,10 @@
 
   #product-image-1 {
     max-width: 100%;
+  }
+
+  .skip-prev-arrows {
+    background-color: #fff;
   }
 
   #product-model-name {

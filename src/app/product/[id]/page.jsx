@@ -7,12 +7,28 @@ import Image from 'next/image';
 
 import { useEffect, useState } from "react";
 
-export default function Teste({ params }) {
+export default function Product({ params }) {
   const idProduct = params.id;
 
   const [dataShoes, setDataShoes] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const { image_url, image_url_2, image_url_3, image_url_4, image_url_5 } = dataShoes;
+  const productImages = [image_url, image_url_2, image_url_3, image_url_4, image_url_5]
+
+  const goToPrevious = () => {
+    const isFirstImage = imageIndex === 0;
+    const newIndex = isFirstImage ? productImages.length - 1 : imageIndex - 1;
+    setImageIndex(newIndex);
+  }
+
+  const goToNext = () => {
+    const isLastImage = imageIndex === productImages.length - 1;
+    const newIndex = isLastImage ? 0 : imageIndex + 1;
+    setImageIndex(newIndex)
+  }
 
   const fetchData = async () => {
     try {
@@ -49,11 +65,22 @@ export default function Teste({ params }) {
           {!isLoading && !error && dataShoes && (
             <>
               <section id='product-images'>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-1' priority></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-2' priority></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-3' priority></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-4' priority></Image>
-                <Image alt='' src={dataShoes.image_url} width={50} height={50} className='product-images-thumb' id='product-image-5' priority></Image>
+                <div className='skip-prev-arrows' id='arrow-right' onClick={goToNext}>
+                  <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722479742/arrowsearch_azxb6r.svg' width={15} height={15} />
+                </div>
+                <div className='skip-prev-arrows' id='arrow-left' onClick={goToPrevious}>
+                  <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722479742/arrowsearch_azxb6r.svg' width={15} height={15} />
+                </div>
+                <div id='product-radio-wrapper'>
+                  {/* <input type="radio" id='product-radio' name="" /> */}
+                  {productImages.map((_image, index) => index === imageIndex ?
+                    <input key={index} type="radio" id='product-radio' name="image" checked /> : <input key={index} type="radio" id='product-radio' name="image" />)}
+                </div>
+                <Image alt='' src={productImages[imageIndex]} width={50} height={50} className='product-images-thumb' id='product-image-1' priority></Image>
+                <Image alt='' src={dataShoes.image_url_2} onClick={() => setImageIndex(1)} width={50} height={50} className='product-images-thumb' id='product-image-2' priority></Image>
+                <Image alt='' src={dataShoes.image_url_3} onClick={() => setImageIndex(2)} width={50} height={50} className='product-images-thumb' id='product-image-3' priority></Image>
+                <Image alt='' src={dataShoes.image_url_4} onClick={() => setImageIndex(3)} width={50} height={50} className='product-images-thumb' id='product-image-4' priority></Image>
+                <Image alt='' src={dataShoes.image_url_5} onClick={() => setImageIndex(4)} width={50} height={50} className='product-images-thumb' id='product-image-5' priority></Image>
               </section>
               <section id='product-model-name'>
                 <p>{`${dataShoes.brand} ${dataShoes.model}`}</p>
