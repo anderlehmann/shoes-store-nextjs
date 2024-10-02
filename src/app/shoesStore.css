@@ -129,6 +129,12 @@
     width: 20px;
   }
 
+  #form-box {
+    display: flex;
+    flex-shrink: 1;
+    min-width: 200px;
+  }
+
   #search-container {
     display: flex;
     align-items: center;

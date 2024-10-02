@@ -15,8 +15,10 @@ export default function Product({ params }) {
   const [error, setError] = useState();
   const [imageIndex, setImageIndex] = useState(0);
 
+  const priceFormat = dataShoes.price?.replace('.', ',');
+
   const { image_url, image_url_2, image_url_3, image_url_4, image_url_5 } = dataShoes;
-  const productImages = [image_url, image_url_2, image_url_3, image_url_4, image_url_5]
+  const productImages = [image_url, image_url_2, image_url_3, image_url_4, image_url_5];
 
   const goToPrevious = () => {
     const isFirstImage = imageIndex === 0;
@@ -72,15 +74,15 @@ export default function Product({ params }) {
                   <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722479742/arrowsearch_azxb6r.svg' width={15} height={15} />
                 </div>
                 <div id='product-radio-wrapper'>
-                  {/* <input type="radio" id='product-radio' name="" /> */}
-                  {productImages.map((_image, index) => index === imageIndex ?
-                    <input key={index} type="radio" id='product-radio' name="image" checked /> : <input key={index} type="radio" id='product-radio' name="image" />)}
+                  {productImages.map((_image, index) =>
+                    <input key={index} type="radio" id='product-radio' name="image" checked={index === imageIndex} readOnly onClick={() => setImageIndex(index)} />
+                  )}
                 </div>
                 <Image alt='' src={productImages[imageIndex]} width={50} height={50} className='product-images-thumb' id='product-image-1' priority></Image>
-                <Image alt='' src={dataShoes.image_url_2} onClick={() => setImageIndex(1)} width={50} height={50} className='product-images-thumb' id='product-image-2' priority></Image>
-                <Image alt='' src={dataShoes.image_url_3} onClick={() => setImageIndex(2)} width={50} height={50} className='product-images-thumb' id='product-image-3' priority></Image>
-                <Image alt='' src={dataShoes.image_url_4} onClick={() => setImageIndex(3)} width={50} height={50} className='product-images-thumb' id='product-image-4' priority></Image>
-                <Image alt='' src={dataShoes.image_url_5} onClick={() => setImageIndex(4)} width={50} height={50} className='product-images-thumb' id='product-image-5' priority></Image>
+                <Image alt='' src={dataShoes.image_url} onClick={() => setImageIndex(0)} width={50} height={50} className='product-images-thumb' id='product-image-2' priority></Image>
+                <Image alt='' src={dataShoes.image_url_2} onClick={() => setImageIndex(1)} width={50} height={50} className='product-images-thumb' id='product-image-3' priority></Image>
+                <Image alt='' src={dataShoes.image_url_3} onClick={() => setImageIndex(2)} width={50} height={50} className='product-images-thumb' id='product-image-4' priority></Image>
+                <Image alt='' src={dataShoes.image_url_4} onClick={() => setImageIndex(3)} width={50} height={50} className='product-images-thumb' id='product-image-5' priority></Image>
               </section>
               <section id='product-model-name'>
                 <p>{`${dataShoes.brand} ${dataShoes.model}`}</p>
@@ -88,7 +90,7 @@ export default function Product({ params }) {
                 <span id='reviews-text'>0,0 | 0 Avaliações</span>
               </section>
               <section id='product-price-cart'>
-                <p>R$ {dataShoes.price}</p>
+                <p>R$ {priceFormat}</p>
                 <div id='product-cart-favorite-wrapper'>
                   <button id='product-button-cart'>
                     <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
