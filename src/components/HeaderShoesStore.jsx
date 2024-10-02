@@ -1,10 +1,22 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import '@/app/shoesStore.css';
 
 export function HeaderShoesStore() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search/${searchQuery}`);
+    };
+  };
+
   return (
     <header id='header-store'>
       <Link href='/'>Solado®</Link>
@@ -17,15 +29,24 @@ export function HeaderShoesStore() {
           width={20}
           height={20}
         />
-        <input type='text' id='search-box' placeholder='Pesquisar' />
-        <button id='search-button'>
-          <Image
-            src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722479742/arrowsearch_azxb6r.svg'
-            alt='buscar'
-            width={15}
-            height={15}
+        <form id='form-box' onSubmit={handleSubmit}>
+          <input
+            type='text'
+            id='search-box'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder='Pesquisar'
+            autoComplete='off'
           />
-        </button>
+          <button type='submit' id='search-button'>
+            <Image
+              src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722479742/arrowsearch_azxb6r.svg'
+              alt='buscar'
+              width={15}
+              height={15}
+            />
+          </button>
+        </form>
       </div>
 
       <div id='icons-header-wrapper'>

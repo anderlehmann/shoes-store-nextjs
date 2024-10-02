@@ -82,7 +82,7 @@
   opacity: 0;
   justify-self: center;
   align-self: last baseline;
-  margin-bottom: 140px;
+  margin-bottom: 25%;
   height: 10px;
   width: auto;
   gap: 10px;
@@ -97,6 +97,7 @@
   justify-self: center;
   align-self: last baseline;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 #product-radio:checked {
@@ -258,6 +259,10 @@
     background-color: #fff;
   }
 
+  #product-radio-wrapper {
+    margin-bottom: 100px;
+  }
+
   #product-model-name {
     /* border: 1px solid green; */
     grid-area: model;
@@ -281,5 +286,11 @@
 
   #product-button-cart {
     width: 60%;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  #product-radio-wrapper {
+    margin-bottom: 140px;
   }
 }
