@@ -16,6 +16,7 @@ export default function Product({ params }) {
   const [imageIndex, setImageIndex] = useState(0);
 
   const priceFormat = dataShoes.price?.replace('.', ',');
+  const shoesNumbers = [35, 36, 37, 38, 39, 40, 41, 42]
 
   const { image_url, image_url_2, image_url_3, image_url_4, image_url_5 } = dataShoes;
   const productImages = [image_url, image_url_2, image_url_3, image_url_4, image_url_5];
@@ -47,7 +48,8 @@ export default function Product({ params }) {
 
     } catch (error) {
       setIsLoading(false);
-      setError(error.message);
+      error.message === 'Item não encontrado.' ?
+        setError(error.message) : setError('Não foi possível carregar os dados')
       console.log(error.message);
     }
   };
@@ -62,9 +64,8 @@ export default function Product({ params }) {
         <Header />
         <main id='main-product-wrapper'>
           {isLoading && <p className='p-load-error'>Carregando...</p>}
-          {error && !isLoading && <p className='p-load-error'>Item não encontrado.</p>}
-          {!dataShoes && !isLoading && !error && <p className='p-load-error'>Não foi possível carregar os dados.</p>}
-          {!isLoading && !error && dataShoes && (
+          {!isLoading && error && <p className='p-load-error'>{error}</p>}
+          {!isLoading && !error && Object.keys(dataShoes).length > 0 && (
             <>
               <section id='product-images'>
                 <div className='skip-prev-arrows' id='arrow-right' onClick={goToNext}>
@@ -91,6 +92,14 @@ export default function Product({ params }) {
               </section>
               <section id='product-price-cart'>
                 <p>R$ {priceFormat}</p>
+                <p>Escolha seu tamanho:</p>
+                <div id='size-shoes-wrapper'>
+                  {shoesNumbers.map((number, index) =>
+                    <label key={index} htmlFor={number} className='label-shoe-number'>
+                      {number}
+                      <input type='radio' name='shoeNumber' id={number} className='radio-number-shoe' />
+                    </label>)}
+                </div>
                 <div id='product-cart-favorite-wrapper'>
                   <button id='product-button-cart'>
                     <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
@@ -102,7 +111,7 @@ export default function Product({ params }) {
                 </div>
                 <div id='price-free-shipping'>
                   <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726197569/truck_etliwi.svg' width={20} height={20} />
-                  <span>Frete grátis acima de R$ 129</span>
+                  <span>Frete grátis acima de R$ 199</span>
                 </div>
               </section>
             </>

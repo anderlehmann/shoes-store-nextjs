@@ -98,10 +98,13 @@
   align-self: last baseline;
   border-radius: 50%;
   cursor: pointer;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 #product-radio:checked {
   background-color: #323232;
+  border-radius: 10px;
+  width: 20px;
 }
 
 .product-images-thumb {
@@ -152,22 +155,60 @@
 }
 
 #product-price-cart {
-  /* border: 1px solid teal; */
   width: 100%;
   height: 100%;
   order: 3;
   font-size: 1.8rem;
   font-weight: 700;
   color: #323232;
-  margin: 30px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#product-price-cart>p {
-  margin-bottom: 30px;
+#product-price-cart p:nth-of-type(1) {
+  margin: 30px 0px;
+}
+
+#product-price-cart p:nth-of-type(2) {
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#size-shoes-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 35px;
+  width: 80%;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.label-shoe-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #323232;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #323232;
+  transition: background-color 0.4s, color 0.3s;
+}
+
+.label-shoe-number:has(.radio-number-shoe:checked) {
+  background-color: #323232;
+  color: white;
+}
+
+.radio-number-shoe {
+  display: none;
 }
 
 #price-free-shipping {
@@ -185,11 +226,12 @@
   justify-content: center;
   gap: 15px;
   margin-bottom: 10px;
+  margin-top: 40px;
+  height: 50px;
 }
 
 #product-button-cart {
-  width: 75%;
-  min-width: 180px;
+  min-width: 80%;
   background-color: #323232;
   color: #eeeeee;
   padding: 12px;
@@ -235,10 +277,13 @@
     grid-template-areas:
       "images model"
       "images price"
+      "images price"
+      "images price"
+      "images price"
       "images .";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, minmax(100px, auto));
-    padding: 30px;
+    grid-template-rows: repeat(6, minmax(10px, auto));
+    padding: 20px;
   }
 
   #product-images {
@@ -266,7 +311,9 @@
   #product-model-name {
     /* border: 1px solid green; */
     grid-area: model;
+    margin-top: 0px;
     min-width: 280px;
+    padding-bottom: 0px;
     padding-left: 30px;
     margin-bottom: 0px;
   }
@@ -279,12 +326,17 @@
     /* border: 1px solid goldenrod; */
   }
 
+  #size-shoes-wrapper {
+    justify-content: start;
+  }
+
   #product-cart-favorite-wrapper {
     justify-content: flex-start;
-    margin-bottom: 0px;
   }
 
   #product-button-cart {
+    /* max-width: 60%; */
+    min-width: 200px;
     width: 60%;
   }
 }

@@ -52,15 +52,13 @@ export function HeaderShoesStore() {
             />
           </Link>
 
-          <Link href="/user">
-            <Image
-              src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/user_sflbco.svg'
-              alt='usuário'
-              className='icons-header-store'
-              width={60}
-              height={60}
-            />
-          </Link>
+          <Image
+            src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/user_sflbco.svg'
+            alt='usuário'
+            className='icons-header-store'
+            width={60}
+            height={60}
+          />
         </div>
       </header>
       {isActiveSearch && <InputSearch isActiveSearch={isActiveSearch} />}

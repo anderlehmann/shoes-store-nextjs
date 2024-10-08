@@ -21,7 +21,7 @@ export default function InputSearch({ isActiveSearch }) {
       <Image
         src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449075/search-desktop_kvf8a3.svg'
         alt='pesquisar'
-        id='search-desktop'
+        id='search-desktop-icon'
         width={20}
         height={20}
       />
