@@ -1,0 +1,132 @@
+#my-favorites {
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 40px 0 20px 0;
+  color: #323232;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.icons-favorites-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+#p-none-favorite {
+  display: flex;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.icon-favorite-shoe {
+  display: flex;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  overflow: clip;
+}
+
+.image-shoe-favorite {
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.name-price-wrapper-favorite {
+  /* border: 1px solid #ff8a8a; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 35px 0 0;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.name-price-wrapper-favorite>p {
+  color: #323232;
+  font-weight: 600;
+}
+
+.button-delete-favorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  right: 0;
+  border: none;
+  border-radius: 0 0 0 10px;
+  background-color: #e1e1e1;
+  cursor: pointer;
+}
+
+.button-delete-favorite:hover {
+  background-color: #ff8a8a;
+}
+
+@media screen and (min-width: 650px) {
+  .image-shoe-favorite {
+    height: 150px;
+    width: 150px;
+  }
+
+  .button-delete-favorite {
+    margin-right: 30px;
+    align-self: center;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+  }
+
+  .name-price-wrapper-favorite {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (min-width: 930px) {
+  #my-favorites {
+    font-size: 1.4rem;
+  }
+
+  #p-none-favorite {
+    font-size: 1.2rem;
+  }
+
+  .name-price-wrapper-favorite {
+    flex-direction: row;
+    margin-right: 20%;
+    margin-left: 25px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .name-price-wrapper-favorite p:nth-of-type(1) {
+    font-size: 1.2rem;
+    max-width: 200px;
+  }
+
+  .name-price-wrapper-favorite p:nth-of-type(2) {
+    font-size: 1.2rem;
+    text-wrap: nowrap;
+  }
+
+  .button-delete-favorite {
+    margin-right: 5%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .name-price-wrapper-favorite {
+    margin-right: 30%;
+  }
+}

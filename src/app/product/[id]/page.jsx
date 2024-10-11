@@ -14,24 +14,7 @@ export default function Product({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
   const [imageIndex, setImageIndex] = useState(0);
-
-  const priceFormat = dataShoes.price?.replace('.', ',');
-  const shoesNumbers = [35, 36, 37, 38, 39, 40, 41, 42]
-
-  const { image_url, image_url_2, image_url_3, image_url_4, image_url_5 } = dataShoes;
-  const productImages = [image_url, image_url_2, image_url_3, image_url_4, image_url_5];
-
-  const goToPrevious = () => {
-    const isFirstImage = imageIndex === 0;
-    const newIndex = isFirstImage ? productImages.length - 1 : imageIndex - 1;
-    setImageIndex(newIndex);
-  }
-
-  const goToNext = () => {
-    const isLastImage = imageIndex === productImages.length - 1;
-    const newIndex = isLastImage ? 0 : imageIndex + 1;
-    setImageIndex(newIndex)
-  }
+  const [favorites, setFavorites] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -54,9 +37,62 @@ export default function Product({ params }) {
     }
   };
 
+  const priceFormat = dataShoes.price?.replace('.', ',');
+  const shoesNumbers = [35, 36, 37, 38, 39, 40, 41, 42, 43];
+
+  const { image_url, image_url_2, image_url_3, image_url_4, image_url_5 } = dataShoes;
+  const productImages = [image_url, image_url_2, image_url_3, image_url_4, image_url_5];
+
+  const goToPrevious = () => {
+    const isFirstImage = imageIndex === 0;
+    const newIndex = isFirstImage ? productImages.length - 1 : imageIndex - 1;
+    setImageIndex(newIndex);
+  }
+
+  const goToNext = () => {
+    const isLastImage = imageIndex === productImages.length - 1;
+    const newIndex = isLastImage ? 0 : imageIndex + 1;
+    setImageIndex(newIndex)
+  }
+
+  const getFavorites = () => {
+    const storedFavorites = localStorage.getItem('favorites');
+    const result = storedFavorites ? JSON.parse(storedFavorites) : [];
+    setFavorites(result);
+  }
+
+  const verifyIsFavorite = () => {
+    if (favorites.length >= 1) {
+      const isFavorite = favorites.some((fav) => fav.id === Number(idProduct));
+      return isFavorite;
+    }
+    return false;
+  }
+
+  const addFavorite = () => {
+    if (verifyIsFavorite()) {
+      return
+    }
+    const updateFavorites = [...favorites, dataShoes];
+    setFavorites(updateFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updateFavorites));
+  };
+
+  const removeFavorite = () => {
+    if (!verifyIsFavorite()) {
+      return
+    }
+    const updatedFavorites = favorites.filter(fav => fav.id !== Number(idProduct));
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  }
+
   useEffect(() => {
     fetchData();
+    getFavorites();
   }, []);
+
+  console.log('aqui', favorites)
 
   return (
     <div className='main-background'>
@@ -105,8 +141,15 @@ export default function Product({ params }) {
                     <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
                     Adicionar ao carrinho
                   </button>
-                  <button id='product-button-favorite'>
-                    <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/like_rlnmsc.svg' width={25} height={25} />
+                  <button id='product-button-favorite' onClick={() => (verifyIsFavorite() ? removeFavorite() : addFavorite())}>
+                    <Image
+                      alt=''
+                      src={verifyIsFavorite() ?
+                        'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1728675847/like-filled_czx6bl.svg' :
+                        'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/like_rlnmsc.svg'}
+                      width={25}
+                      height={25}
+                    />
                   </button>
                 </div>
                 <div id='price-free-shipping'>

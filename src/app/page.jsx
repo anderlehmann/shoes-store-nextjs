@@ -46,6 +46,7 @@ export default function HomeShoesStore() {
     <div className='main-background'>
       <div id='main-content'>
         <Header />
+        <h3>▼ Mais relevantes</h3>
         <section id='icons-shoes-wrapper'>
           {isLoading ? <p className='p-load-error'>Carregando...</p> : dataMapped()}
         </section>
