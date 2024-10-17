@@ -62,7 +62,7 @@ export default function Product({ params }) {
   }
 
   const verifyIsFavorite = () => {
-    if (favorites.length >= 1) {
+    if (favorites.length > 0) {
       const isFavorite = favorites.some((fav) => fav.id === Number(idProduct));
       return isFavorite;
     }
@@ -91,8 +91,6 @@ export default function Product({ params }) {
     fetchData();
     getFavorites();
   }, []);
-
-  console.log('aqui', favorites)
 
   return (
     <div className='main-background'>

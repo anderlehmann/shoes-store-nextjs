@@ -1,6 +1,7 @@
 'use client';
 
 import '@/app/shoesStore.css'
+import Banner from '@/components/Banner';
 import { HeaderShoesStore as Header } from '@/components/HeaderShoesStore';
 import { IconShoes } from '@/components/IconShoes';
 import { useEffect, useState } from 'react';
@@ -24,17 +25,24 @@ export default function HomeShoesStore() {
 
   const dataMapped = () => {
     if (dataShoes.shoes?.length > 0) {
-      return dataShoes.shoes.map((shoe, index) => {
-        return <IconShoes
-          key={index}
-          idUrl={shoe.id}
-          src={shoe.image_url}
-          brand={shoe.brand}
-          model={shoe.model}
-          price={shoe.price}
-        />
-      })
-    }
+      return (
+        <>
+          <p id='text-top-category'>Mais relevantes</p>
+          <section id='icons-shoes-wrapper'>
+            {dataShoes.shoes.map((shoe, index) => {
+              return <IconShoes
+                key={index}
+                idUrl={shoe.id}
+                src={shoe.image_url}
+                brand={shoe.brand}
+                model={shoe.model}
+                price={shoe.price}
+              />
+            })}
+          </section>
+        </>
+      )
+    };
     return <p className='p-load-error'>Não foi possível carregar os dados.</p>
   }
 
@@ -46,9 +54,8 @@ export default function HomeShoesStore() {
     <div className='main-background'>
       <div id='main-content'>
         <Header />
-        <section id='icons-shoes-wrapper'>
-          {isLoading ? <p className='p-load-error'>Carregando...</p> : dataMapped()}
-        </section>
+        <Banner />
+        {isLoading ? <p className='p-load-error'>Carregando...</p> : dataMapped()}
       </div>
     </div>
   )

@@ -34,7 +34,6 @@ export default function Favorites() {
         <Header />
         <p id='my-favorites'>Meus favoritos</p>
         <main className='icons-favorites-wrapper'>
-
           {favorites.length <= 0 ? <p id='p-none-favorite'>Nenhum item adicionado aos favoritos.</p> :
             favorites.map((item, index) =>
               <Link key={index} href={`/product/${item.id}`} className='icon-favorite-shoe'>
@@ -48,7 +47,7 @@ export default function Favorites() {
                 />
                 <div className='name-price-wrapper-favorite'>
                   <p>{`${item.brand} ${item.model}`}</p>
-                  <p>{item.price.replace('.', ',')}</p>
+                  <p>R$ {item.price.replace('.', ',')}</p>
                 </div>
                 <button className='button-delete-favorite' onClick={(e) => removeFavorite(e, item.id)}>
                   <Image

@@ -55,8 +55,14 @@
   overflow: hidden;
 }
 
+#text-top-category {
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 40px;
+  font-weight: 600;
+}
+
 #icons-shoes-wrapper {
-  margin: 40px 0;
   justify-content: center;
   padding: 10px 0;
   min-height: 200px;
@@ -85,12 +91,21 @@
   align-items: center;
   justify-content: center;
   justify-self: center;
-  position: fixed;
-  max-width: max-content;
-  min-height: 180px;
-  /* border: 1px solid green; */
+  width: 100%;
+  min-height: 250px;
 }
 
+@media screen and (min-width: 650px) {
+  #search-mobile {
+    display: none;
+  }
+
+  #text-top-category {
+    font-size: 1.2rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+}
 
 @media screen and (min-width: 760px) {
   #main-content {
@@ -106,6 +121,7 @@
     align-items: center;
     width: 100%;
     max-width: 1180px;
+    padding: 0 10px;
     overflow: clip;
   }
 
@@ -124,10 +140,6 @@
     width: 35px;
     height: 35px;
     overflow: hidden;
-  }
-
-  #search-mobile {
-    display: none;
   }
 
   #search-results-text {
