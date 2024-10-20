@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -5,9 +7,23 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import './Banner.css';
+import styles from './Banner.css';
 
 export default function Banner() {
+  const bannerData = [
+    {
+      src: 'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729122137/bannerblackcrop_g3ribm.jpg',
+      alt: 'tenis pretos'
+    },
+    {
+      src: 'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729118676/bannerwhitecrop_u7br0g.jpg',
+      alt: 'tenis brancos',
+    },
+    {
+      src: 'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729118676/bannercorridacrop_fqmyla.jpg',
+      alt: 'tenis esportes',
+    }
+  ];
 
   return (
     <Swiper
@@ -21,36 +37,19 @@ export default function Banner() {
       navigation
       loop={true}
       pagination={{ clickable: true }}
-      onMouseEnter={(swiper) => swiper.autoplay.stop()}
-      onMouseLeave={(swiper) => swiper.autoplay.start()}
+      className='swiper-banner'
     >
-      <SwiperSlide>
-        <Image
-          className='swiper-images'
-          alt='tenis pretos'
-          src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729122137/bannerblackcrop_g3ribm.jpg'
-          width={1510}
-          height={510}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Image
-          className='swiper-images'
-          alt='tenis brancos'
-          src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729118676/bannerwhitecrop_u7br0g.jpg'
-          width={1510}
-          height={516}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Image
-          className='swiper-images'
-          alt='tenis esportes'
-          src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729118676/bannercorridacrop_fqmyla.jpg'
-          width={1510}
-          height={516}
-        />
-      </SwiperSlide>
+      {bannerData.map((data, index) =>
+        <SwiperSlide key={index}>
+          <Image
+            className='swiper-images'
+            alt={data.alt}
+            src={data.src}
+            width={1510}
+            height={510}
+          />
+        </SwiperSlide>
+      )}
     </Swiper>
   )
 };

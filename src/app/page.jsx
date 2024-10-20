@@ -44,7 +44,7 @@ export default function HomeShoesStore() {
       )
     };
     return <p className='p-load-error'>Não foi possível carregar os dados.</p>
-  }
+  };
 
   useEffect(() => {
     fetchData();
