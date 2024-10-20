@@ -26,19 +26,25 @@ export default function SearchPage({ params }) {
 
   const dataMapped = () => {
     if (dataShoes.length > 0) {
-      return dataShoes.map((shoe, index) => {
-        return <IconShoes
-          key={index}
-          idUrl={shoe.id}
-          src={shoe.image_url}
-          brand={shoe.brand}
-          model={shoe.model}
-          price={shoe.price}
-        />
-      })
-    }
+      return (
+        <section id='icons-shoes-wrapper'>
+          {dataShoes.map((shoe, index) => {
+            return (
+              <IconShoes
+                key={index}
+                idUrl={shoe.id}
+                src={shoe.image_url}
+                brand={shoe.brand}
+                model={shoe.model}
+                price={shoe.price}
+              />
+            )
+          })}
+        </section>
+      )
+    };
     return <p className='p-load-error'>Nenhum item encontrado.</p>
-  }
+  };
 
   useEffect(() => {
     fetchData()
@@ -49,9 +55,7 @@ export default function SearchPage({ params }) {
       <div id='main-content'>
         <Header />
         <p id='search-results-text' >Exibindo resultados para: <b>{decodeURIComponent(searchQuery)}</b></p>
-        <section id='icons-shoes-wrapper'>
-          {isLoading ? <p className='p-load-error'>Carregando...</p> : dataMapped()}
-        </section>
+        {isLoading ? <p className='p-load-error'>Carregando...</p> : dataMapped()}
       </div>
     </div>
   )
