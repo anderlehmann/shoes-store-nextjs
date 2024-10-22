@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import './IconShoes.css';
 
-export function IconShoes({ idUrl, src, brand, model, price }) {
+export default function IconShoes({ idUrl, src, brand, model, price }) {
   const priceFormat = price.replace('.', ',');
 
   return (

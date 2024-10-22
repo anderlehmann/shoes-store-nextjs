@@ -1,8 +1,10 @@
 'use client'
 
-import { HeaderShoesStore as Header } from '@/components/HeaderShoesStore';
-import { IconShoes } from '@/components/IconShoes';
-import '@/app/shoesStore.css'
+import Header from '@/components/Header';
+import IconShoes from '@/components/IconShoes';
+import SectionShoesWrapper from '@/components/SectionShoesWrapper';
+
+import './pageSearch.css'
 
 import { useEffect, useState } from 'react';
 
@@ -27,7 +29,7 @@ export default function SearchPage({ params }) {
   const dataMapped = () => {
     if (dataShoes.length > 0) {
       return (
-        <section id='icons-shoes-wrapper'>
+        <SectionShoesWrapper>
           {dataShoes.map((shoe, index) => {
             return (
               <IconShoes
@@ -40,7 +42,7 @@ export default function SearchPage({ params }) {
               />
             )
           })}
-        </section>
+        </SectionShoesWrapper>
       )
     };
     return <p className='p-load-error'>Nenhum item encontrado.</p>

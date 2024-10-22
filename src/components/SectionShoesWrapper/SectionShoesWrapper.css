@@ -1,0 +1,38 @@
+#text-top-category {
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 40px;
+  font-weight: 600;
+}
+
+#section-shoes-wrapper {
+  justify-content: center;
+  padding: 10px 0;
+  min-height: 200px;
+  gap: 15px;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  transition: all 0.5s ease;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  justify-items: center;
+}
+
+@media screen and (min-width: 650px) {
+  #text-top-category {
+    font-size: 1.2rem;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 760px) {
+  #section-shoes-wrapper {
+    max-width: 1180px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 25px 20px;
+    justify-items: center;
+  }
+}

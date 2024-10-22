@@ -1,9 +1,10 @@
 'use client';
 
-import '@/app/shoesStore.css'
 import Banner from '@/components/Banner';
-import { HeaderShoesStore as Header } from '@/components/HeaderShoesStore';
-import { IconShoes } from '@/components/IconShoes';
+import Header from '@/components/Header';
+import IconShoes from '@/components/IconShoes';
+import SectionShoesWrapper from '@/components/SectionShoesWrapper';
+
 import { useEffect, useState } from 'react';
 
 export default function HomeShoesStore() {
@@ -26,21 +27,18 @@ export default function HomeShoesStore() {
   const dataMapped = () => {
     if (dataShoes.shoes?.length > 0) {
       return (
-        <>
-          <p id='text-top-category'>Mais relevantes</p>
-          <section id='icons-shoes-wrapper'>
-            {dataShoes.shoes.map((shoe, index) => {
-              return <IconShoes
-                key={index}
-                idUrl={shoe.id}
-                src={shoe.image_url}
-                brand={shoe.brand}
-                model={shoe.model}
-                price={shoe.price}
-              />
-            })}
-          </section>
-        </>
+        <SectionShoesWrapper sectionTitle={'Mais relevantes'}>
+          {dataShoes.shoes.map((shoe, index) => {
+            return <IconShoes
+              key={index}
+              idUrl={shoe.id}
+              src={shoe.image_url}
+              brand={shoe.brand}
+              model={shoe.model}
+              price={shoe.price}
+            />
+          })}
+        </SectionShoesWrapper>
       )
     };
     return <p className='p-load-error'>Não foi possível carregar os dados.</p>

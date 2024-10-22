@@ -1,0 +1,12 @@
+#search-results-text {
+  /* border: 1px solid; */
+  width: 100%;
+  margin: 50px 0 20px 0;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 760px) {
+  #search-results-text {
+    font-size: 1.1rem;
+  }
+}

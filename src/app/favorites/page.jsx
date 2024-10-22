@@ -4,9 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import '@/app/shoesStore.css'
+import Header from '@/components/Header';
 import './pageFavorites.css';
-import { HeaderShoesStore as Header } from '@/components/HeaderShoesStore';
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
