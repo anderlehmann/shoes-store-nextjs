@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { CSSTransition } from 'react-transition-group';
 
-import InputSearch from "./InputSearch";
-import '@/app/shoesStore.css';
+import InputSearch from '@/components/InputSearch';
+import './Header.css';
 
-export function HeaderShoesStore() {
+export default function Header() {
   const [isActiveSearch, setIsActiveSearch] = useState(false);
 
   const toggleSearchInput = () => {

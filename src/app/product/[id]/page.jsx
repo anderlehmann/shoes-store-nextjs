@@ -1,8 +1,7 @@
 'use client'
 
-import '@/app/shoesStore.css';
 import './pageProduct.css';
-import { HeaderShoesStore as Header } from '@/components/HeaderShoesStore';
+import Header from '@/components/Header';
 import Image from 'next/image';
 import ThumbsGallery from '@/components/ThumbsGallery';
 
@@ -87,49 +86,50 @@ export default function Product({ params }) {
         {isLoading && <p className='p-load-error'>Carregando...</p>}
         {!isLoading && error && <p className='p-load-error'>{error}</p>}
         {!isLoading && !error && Object.keys(dataShoes).length > 0 && (
-          <main id='main-product-wrapper'>
-            <section id='product-images'>
-              <ThumbsGallery images={productImages} />
-            </section>
-            <section id='product-model-name'>
-              <p>{`${dataShoes.brand} ${dataShoes.model}`}</p>
-              <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726180407/stars_heh6tx.svg' width={75} height={15} />
-              <span id='reviews-text'>0,0 | 0 Avaliações</span>
-            </section>
-            <section id='product-price-cart'>
-              <p>R$ {priceFormat}</p>
-              <p>Escolha seu tamanho:</p>
-              <div id='size-shoes-wrapper'>
-                {shoesNumbers.map((number, index) =>
-                  <label key={index} htmlFor={number} className='label-shoe-number'>
-                    {number}
-                    <input type='radio' name='shoeNumber' id={number} className='radio-number-shoe' />
-                  </label>)}
-              </div>
-              <div id='product-cart-favorite-wrapper'>
-                <button id='product-button-cart'>
-                  <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
-                  Adicionar ao carrinho
-                </button>
-                <button id='product-button-favorite' onClick={() => (verifyIsFavorite() ? removeFavorite() : addFavorite())}>
-                  <Image
-                    alt=''
-                    src={verifyIsFavorite() ?
-                      'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1728675847/like-filled_czx6bl.svg' :
-                      'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/like_rlnmsc.svg'}
-                    width={25}
-                    height={25}
-                  />
-                </button>
-              </div>
-              <div id='price-free-shipping'>
-                <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726197569/truck_etliwi.svg' width={20} height={20} />
-                <span>Frete grátis acima de R$ 199</span>
-              </div>
-            </section>
-          </main>
+          <>
+            <main id='main-product-wrapper'>
+              <section id='product-images'>
+                <ThumbsGallery images={productImages} />
+              </section>
+              <section id='product-model-name'>
+                <p>{`${dataShoes.brand} ${dataShoes.model}`}</p>
+                <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726180407/stars_heh6tx.svg' width={75} height={15} />
+                <span id='reviews-text'>0,0 | 0 Avaliações</span>
+              </section>
+              <section id='product-price-cart'>
+                <p>R$ {priceFormat}</p>
+                <p>Escolha seu tamanho:</p>
+                <div id='size-shoes-wrapper'>
+                  {shoesNumbers.map((number, index) =>
+                    <label key={index} htmlFor={number} className='label-shoe-number'>
+                      {number}
+                      <input type='radio' name='shoeNumber' id={number} className='radio-number-shoe' />
+                    </label>)}
+                </div>
+                <div id='product-cart-favorite-wrapper'>
+                  <button id='product-button-cart'>
+                    <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726192400/cart_white_auykmw.svg' width={25} height={25} />
+                    Adicionar ao carrinho
+                  </button>
+                  <button id='product-button-favorite' onClick={() => (verifyIsFavorite() ? removeFavorite() : addFavorite())}>
+                    <Image
+                      alt=''
+                      src={verifyIsFavorite() ?
+                        'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1728675847/like-filled_czx6bl.svg' :
+                        'https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/like_rlnmsc.svg'}
+                      width={25}
+                      height={25}
+                    />
+                  </button>
+                </div>
+                <div id='price-free-shipping'>
+                  <Image alt='' src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1726197569/truck_etliwi.svg' width={20} height={20} />
+                  <span>Frete grátis acima de R$ 199</span>
+                </div>
+              </section>
+            </main>
+          </>
         )}
-        {/* <ThumbsGallery /> */}
       </div>
     </div >
   )

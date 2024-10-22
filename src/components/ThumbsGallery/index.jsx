@@ -22,13 +22,13 @@ export default function ThumbsGallery({ images }) {
         loop={true}
         spaceBetween={0}
         navigation={true}
-        pagination
+        pagination={{ clickable: true }}
         thumbs={{ swiper: thumbsSwiper }}
         className="mySwiper"
       >
         {images.map((image, index) =>
           <SwiperSlide key={index}>
-            <Image className='top-image-slide' alt='' src={image} width={800} height={800} />
+            <Image className='top-image-slide' alt='' src={image} width={800} height={800} priority />
           </SwiperSlide>
         )}
       </Swiper>
@@ -44,7 +44,7 @@ export default function ThumbsGallery({ images }) {
       >
         {images.map((image, index) =>
           <SwiperSlide key={index}>
-            <Image className='bottom-image-slide' alt='' src={image} width={800} height={800} />
+            <Image className='bottom-image-slide' alt='' src={image} width={800} height={800} priority />
           </SwiperSlide>
         )}
       </Swiper>

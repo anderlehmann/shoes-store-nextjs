@@ -7,7 +7,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import styles from './Banner.css';
+import './Banner.css';
 
 export default function Banner() {
   const bannerData = [
