@@ -4,6 +4,7 @@ import './pageProduct.css';
 import Header from '@/components/Header';
 import Image from 'next/image';
 import ThumbsGallery from '@/components/ThumbsGallery';
+import Newsletter from '@/components/Newsletter';
 
 import { useEffect, useState } from "react";
 
@@ -130,6 +131,7 @@ export default function Product({ params }) {
             </main>
           </>
         )}
+        <Newsletter />
       </div>
     </div >
   )

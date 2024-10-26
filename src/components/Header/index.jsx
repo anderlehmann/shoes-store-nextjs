@@ -53,7 +53,7 @@ export default function Header() {
           </Link>
 
           <Image
-            src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1722449186/user_sflbco.svg'
+            src='https://res.cloudinary.com/dsgkcgx1s/image/upload/v1729891838/icon_user_gopxml.svg'
             alt='usuário'
             className='icons-header-store'
             width={60}

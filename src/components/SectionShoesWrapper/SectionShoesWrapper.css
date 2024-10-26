@@ -1,8 +1,9 @@
 #text-top-category {
-  font-size: 1rem;
+  font-size: 1.1rem;
   width: 100%;
-  margin-top: 40px;
   font-weight: 600;
+  color: #323232;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 #section-shoes-wrapper {
@@ -17,11 +18,12 @@
   animation: fadeIn 0.5s ease-in-out forwards;
   grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
   justify-items: center;
+  margin-bottom: 50px;
 }
 
 @media screen and (min-width: 650px) {
   #text-top-category {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-left: 20px;
     margin-bottom: 10px;
   }
